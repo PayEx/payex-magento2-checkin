@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="PayEx\Checkin\Model\ConsumerSession\Storage" type="Magento\Framework\Session\Storage">
+        <arguments>
+            <argument name="namespace" xsi:type="string">PayEx_Checkin</argument>
+        </arguments>
+    </virtualType>
+    <type name="PayEx\Checkin\Model\ConsumerSession">
+        <arguments>
+            <argument name="storage" xsi:type="object">PayEx\Checkin\Model\ConsumerSession\Storage</argument>
+        </arguments>
+    </type>
+</config>
