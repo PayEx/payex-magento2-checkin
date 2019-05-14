@@ -1,0 +1,20 @@
+<!-- ko if: isVisible() -->
+    <div class="payex-checkin__wrapper">
+        <p class="payex-checkin__subtitle" data-bind="i18n: 'Checkin with PayEx'"></p>
+
+        <div id="checkin-widget" class="payex-checkin__iframe" data-bind="afterRender: payexSetupHostedView"></div>
+        <div class="payex-checkin__actions">
+            <!-- ko if: !isCheckedIn() -->
+                <!-- ko if: !isRequired() -->
+                    <!-- ko if: !isShippingSectionVisible() -->
+                            <button class="payex-checkin__skip button" data-bind="i18n: 'Proceed as guest', click: proceedAsGuest"></button>
+                    <!-- /ko -->
+                <!-- /ko -->
+            <!-- /ko -->
+
+            <!-- ko if: isCheckedIn() && !isShippingSectionVisible() -->
+                <button class="payex-checkin__skip button" data-bind="i18n: 'Change shipping information', click: proceedAsGuest"></button>
+            <!-- /ko -->
+        </div>
+    </div>
+<!-- /ko -->

@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="PayEx\Checkin\Block\Widget\CheckinWidget" id="payex_checkin_widget">
+        <label>PayEx Checkin Widget</label>
+        <description>PayEx Checkin Widget</description>
+    </widget>
+</widgets>

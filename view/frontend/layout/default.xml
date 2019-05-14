@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="PayEx_Checkin::css/payex_checkin.css"/>
+    </head>
+    <body>
+        <referenceContainer name="after.body.start">
+            <block class="PayEx\Checkin\Block\Widget\CheckinWidget" name="payex.checkin.script" template="PayEx_Checkin::widget/checkin-script.phtml" ifconfig="payex/checkin/active" before="-"/>
+        </referenceContainer>
+    </body>
+</page>

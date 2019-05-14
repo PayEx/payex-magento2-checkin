@@ -1,0 +1,31 @@
+<?php
+/** @var \PayEx\Checkin\Block\Widget\CheckinWidget $block */
+if ($block->isActive() && !$block->isConsumerIdentified()):?>
+    <div class="payex-checkin__wrapper">
+        <p class="payex-checkin__subtitle" data-bind="i18n: 'Checkin with PayEx'"></p>
+        <div id="checkin-widget" class="payex-checkin__iframe"></div>
+    </div>
+
+    <script type="text/x-magento-init">
+        {
+            "#checkin-widget": {
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "checkin-widget": {
+                            "config": {
+                                "data": {
+                                    "element": "checkin-widget",
+                                    "OnConsumerIdentifiedUrl": "<?= $block->getUrl('PayEx/Checkin/Index/OnConsumerIdentified'); ?>",
+                                    "OnConsumerReidentifiedUrl": "<?= $block->getUrl('PayEx/Checkin/Index/OnConsumerReidentified'); ?>",
+                                    "OnShippingDetailsAvailableUrl": "<?= $block->getUrl('PayEx/Checkin/Index/OnShippingDetailsAvailable'); ?>",
+                                    "OnBillingDetailsAvailableUrl": "<?= $block->getUrl('PayEx/Checkin/Index/OnBillingDetailsAvailable'); ?>"
+                                }
+                            },
+                            "component": "PayEx_Checkin/js/view/checkin"
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+<?php endif; ?>
