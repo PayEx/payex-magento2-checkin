@@ -40,8 +40,8 @@ class AdditionalConfigVars implements ConfigProviderInterface
     {
         return [
             'PayEx_Checkin' => [
-                'isEnabled' => $this->config->getValue('active'),
-                'isRequired' => $this->config->getValue('required'),
+                'isEnabled' => $this->config->isActive(),
+                'isRequired' => $this->config->getValue('required') ? true : false,
                 'OnConsumerIdentifiedUrl' => $this->urlBuilder->getUrl('PayExCheckin/Index/OnConsumerIdentified'),
                 'OnConsumerReidentifiedUrl' => $this->urlBuilder->getUrl('PayExCheckin/Index/OnConsumerReidentified'),
                 'OnBillingDetailsAvailableUrl' => $this->urlBuilder->getUrl('PayExCheckin/Index/OnBillingDetailsAvailable'),
