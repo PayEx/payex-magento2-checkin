@@ -136,6 +136,4 @@ class ConsumerSession extends \Magento\Framework\Session\SessionManager
     {
         $this->storage->setData(self::ACTION_TYPE, $actionType);
     }
-
-
 }
