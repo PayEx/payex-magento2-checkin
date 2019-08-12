@@ -21,6 +21,7 @@ define([
 
     var PayEx = window.payex,
         onConsumerIdentifiedDelay = ko.observable(false),
+        isEnabled = ko.observable(false),
         isVisible = ko.observable(false),
         isShippingSectionVisible = ko.observable(false),
         isRequired = ko.observable(false),
@@ -34,6 +35,7 @@ define([
                 billingDetails: ko.observable({})
             }
         },
+        isEnabled: isEnabled,
         isVisible: isVisible,
         isShippingSectionVisible: isShippingSectionVisible,
         isRequired: isRequired,
@@ -50,12 +52,15 @@ define([
                 Object.assign(self.config.data, window.checkoutConfig.PayEx_Checkin);
                 self.config.isCheckout = config.isCheckout;
 
+                self.isEnabled((this.config.data.isEnabled == true));
                 self.isRequired((this.config.data.isRequired == true));
 
-                stepNavigator.steps.subscribe(function(section){
-                    stepNavigator.hideSection('shipping');
-                    isShippingSectionVisible(false);
-                });
+                if(self.isEnabled) {
+                    stepNavigator.steps.subscribe(function (section) {
+                        stepNavigator.hideSection('shipping');
+                        isShippingSectionVisible(false);
+                    });
+                }
 
             } else {
                 Object.assign(self.config, config);
@@ -65,8 +70,10 @@ define([
                 self.proceedAsGuest();
             };
 
-            // Make request to get consumer info if user logged in through checkin in current session
-            self.checkIsCheckedIn();
+            if(self.isEnabled) {
+                // Make request to get consumer info if user logged in through checkin in current session
+                self.checkIsCheckedIn();
+            }
         },
         checkIsCheckedIn: function(){
             var self = this;
